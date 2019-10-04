@@ -106,6 +106,20 @@ app.route("/articles")
           }
         }
       );
+    })
+
+    .delete(function(req, res){
+      Article.deleteOne(
+        //conditions
+        {title: req.params.articleTitle},
+        function(err){
+          if (!err) {
+            res.send("Successfully deleted item.");
+          } else {
+            res.send(err);
+          }
+        }
+      );
     });
 
 
